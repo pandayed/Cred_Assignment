@@ -1,85 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
     tools:context=".CategoriesActivity">
 
-    <TextView
-        android:id="@+id/tvExplore"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="explore"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="20dp">
 
-    <TextView
-        android:id="@+id/tvCred"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:text="CRED"
-        android:textSize="28sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/sViewChanger"
-        app:layout_constraintTop_toBottomOf="@id/tvExplore" />
 
-    <ImageView
-        android:id="@+id/ivDropDown"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintBottom_toBottomOf="@id/tvCred"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvCred" />
+        <TextView
+            android:id="@+id/tvExplore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="explore"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Switch
-        android:id="@+id/sViewChanger"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/tvCred"
-        app:layout_constraintRight_toLeftOf="@id/ivDropDown"
-        app:layout_constraintTop_toTopOf="@id/tvCred" />
+        <TextView
+            android:id="@+id/tvCred"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="CRED"
+            android:textSize="28sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/sViewChanger"
+            app:layout_constraintTop_toBottomOf="@id/tvExplore" />
 
-    <TextView
-        android:id="@+id/tvMoney"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Money"
-        app:layout_constraintTop_toBottomOf="@id/tvCred" />
+        <ImageView
+            android:id="@+id/ivDropDown"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toBottomOf="@id/tvCred"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvCred" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMoney"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvMoney" />
+        <Switch
+            android:id="@+id/sViewChanger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvCred"
+            app:layout_constraintRight_toLeftOf="@id/ivDropDown"
+            app:layout_constraintTop_toTopOf="@id/tvCred" />
 
-    <TextView
-        android:id="@+id/tvBenefits"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Benefits"
-        app:layout_constraintTop_toBottomOf="@id/rvMoney" />
+        <TextView
+            android:id="@+id/tvMoney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Money"
+            app:layout_constraintTop_toBottomOf="@id/tvCred" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBenefits"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvBenefits" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMoney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvMoney"
+            tools:itemCount="2"
+            tools:listitem="@layout/rv_descriptive_items" />
 
-    <TextView
-        android:id="@+id/tvBills"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bills"
-        app:layout_constraintTop_toBottomOf="@id/rvBenefits" />
+        <TextView
+            android:id="@+id/tvBenefits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Benefits"
+            app:layout_constraintTop_toBottomOf="@id/rvMoney" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBills"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvBills" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBenefits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBenefits" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvBills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bills"
+            app:layout_constraintTop_toBottomOf="@id/rvBenefits" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBills" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
