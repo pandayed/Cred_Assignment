@@ -29,7 +29,7 @@ class RecyclerViewItemAdapter(private val layoutManager: GridLayoutManager): Rec
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.apply {
-
+            
         }
     }
 
