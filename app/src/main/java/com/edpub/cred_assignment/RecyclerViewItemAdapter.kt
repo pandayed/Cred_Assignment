@@ -1,5 +1,6 @@
 package com.edpub.cred_assignment
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,13 +15,18 @@ class RecyclerViewItemAdapter(private val layoutManager: GridLayoutManager): Rec
     }
 
     inner class SimpleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        constructor(parent: ViewGroup): this(LayoutInflater.from(parent.context).inflate(R.layout.rv_descriptive_items, parent, false))
+        constructor(parent: ViewGroup): this(LayoutInflater.from(parent.context).inflate(R.layout.rv_compact_items, parent, false)){
+            Log.i("RecyclerViewInit", "Compact")
+        }
     }
 
     inner class DetailedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        constructor(parent: ViewGroup): this(LayoutInflater.from(parent.context).inflate(R.layout.rv_descriptive_items, parent, false))
+        constructor(parent: ViewGroup): this(LayoutInflater.from(parent.context).inflate(R.layout.rv_descriptive_items, parent, false)){
+            Log.i("RecyclerViewInit", "Detailed")
+        }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        Log.i("RecyclerViewInit", viewType.toString())
         return when (viewType) {
             ViewType.DETAILED.ordinal -> DetailedViewHolder(parent)
             else -> SimpleViewHolder(parent)
@@ -34,7 +40,8 @@ class RecyclerViewItemAdapter(private val layoutManager: GridLayoutManager): Rec
     }
 
     override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position)
+        return if (layoutManager.spanCount == 1) ViewType.DETAILED.ordinal
+        else ViewType.SMALL.ordinal
     }
 
     override fun getItemCount() = 5
