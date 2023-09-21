@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         val bGotoCategory = findViewById<Button>(R.id.bGotoCategory)
         val tvTitle = findViewById<android.widget.TextView>(R.id.tvTitle)
 
+        val bChooseNewCategory = findViewById<Button>(R.id.bChooseNewCategory)
 
         if(category==null){
             clGotoCategory.visibility = android.view.View.VISIBLE
@@ -38,14 +39,16 @@ class MainActivity : AppCompatActivity() {
             handler.post {
                 tvTitle.text = category
             }
-
         }
-
         bGotoCategory.setOnClickListener {
             val intent = Intent(this, CategoriesActivity::class.java)
             startActivity(intent)
         }
 
+        bChooseNewCategory.setOnClickListener {
+            val intent = Intent(this, CategoriesActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
