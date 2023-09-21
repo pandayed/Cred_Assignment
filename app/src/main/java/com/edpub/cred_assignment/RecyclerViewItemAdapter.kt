@@ -4,38 +4,64 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerViewItemAdapter(private val layoutManager: GridLayoutManager): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecyclerViewItemAdapter(private val layoutManager: GridLayoutManager, private val rvItems: MutableList<RvItemClass>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     enum class ViewType {
         SMALL,
         DETAILED
     }
 
-    inner class SimpleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class CompactViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
+        lateinit var ivItem : ImageView
+        lateinit var tvTitle : TextView
+
         constructor(parent: ViewGroup): this(LayoutInflater.from(parent.context).inflate(R.layout.rv_compact_items, parent, false)){
             Log.i("RecyclerViewInit", "Compact")
+
+            ivItem = itemView.findViewById(R.id.ivItem)
+            tvTitle = itemView.findViewById(R.id.tvTitle)
         }
     }
 
     inner class DetailedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
+        lateinit var ivItem : ImageView
+        lateinit var tvTitle : TextView
+        lateinit var tvDescription : TextView
         constructor(parent: ViewGroup): this(LayoutInflater.from(parent.context).inflate(R.layout.rv_descriptive_items, parent, false)){
             Log.i("RecyclerViewInit", "Detailed")
+            ivItem = itemView.findViewById(R.id.ivItem)
+            tvTitle = itemView.findViewById(R.id.tvTitle)
+            tvDescription = itemView.findViewById(R.id.tvDescription)
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         Log.i("RecyclerViewInit", viewType.toString())
         return when (viewType) {
             ViewType.DETAILED.ordinal -> DetailedViewHolder(parent)
-            else -> SimpleViewHolder(parent)
+            else -> CompactViewHolder(parent)
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.apply {
-            
+            when (this) {
+                is CompactViewHolder -> {
+                    ivItem.setImageResource(rvItems[position].image)
+                    tvTitle.text = rvItems[position].title
+                }
+                is DetailedViewHolder -> {
+                    ivItem.setImageResource(rvItems[position].image)
+                    tvTitle.text = rvItems[position].title
+                    tvDescription.text = rvItems[position].description
+                }
+            }
         }
     }
 
@@ -44,5 +70,5 @@ class RecyclerViewItemAdapter(private val layoutManager: GridLayoutManager): Rec
         else ViewType.SMALL.ordinal
     }
 
-    override fun getItemCount() = 5
+    override fun getItemCount() = rvItems.size
 }
