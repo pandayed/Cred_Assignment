@@ -1,5 +1,6 @@
 package com.edpub.cred_assignment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -39,6 +40,9 @@ class CategoriesActivity : AppCompatActivity() {
             override fun onClick(index: Int) {
                 sharedPrefEditor.putString("category", DataItems.moneyItems[index].title)
                 sharedPrefEditor.commit()
+                val intent = Intent(this@CategoriesActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
             }
         })
 
@@ -47,6 +51,9 @@ class CategoriesActivity : AppCompatActivity() {
             override fun onClick(index: Int) {
                 sharedPrefEditor.putString("category", DataItems.benefitsItems[index].title)
                 sharedPrefEditor.commit()
+                val intent = Intent(this@CategoriesActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
             }
         })
 
@@ -55,6 +62,9 @@ class CategoriesActivity : AppCompatActivity() {
             override fun onClick(index: Int) {
                 sharedPrefEditor.putString("category", DataItems.billItems[index].title)
                 sharedPrefEditor.commit()
+                val intent = Intent(this@CategoriesActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
             }
         })
 
