@@ -1,6 +1,6 @@
 # Cred_Assignment
 
-The first screen on app opening is:
+The first screen on app opening is:  
 ![s1](https://github.com/xpandeyed/Cred_Assignment/assets/74754285/ca8fb3e2-2250-4370-93f8-1d0866199eee)  
   
   
