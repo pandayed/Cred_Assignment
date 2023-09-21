@@ -3,7 +3,9 @@ package com.edpub.cred_assignment
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -68,7 +70,7 @@ class CategoriesActivity : AppCompatActivity() {
             }
         })
 
-        val sViewChanger = findViewById<SwitchMaterial>(R.id.sViewChanger)
+        val sViewChanger = findViewById<SwitchCompat>(R.id.sViewChanger)
 
         if (sViewChanger.isChecked) {
             loadCompactUI()
@@ -114,17 +116,18 @@ class CategoriesActivity : AppCompatActivity() {
     }
 
     private fun loadCompactUI() {
-        moneyLayoutManager.spanCount = 3
+        moneyLayoutManager.spanCount = 4
         moneyAdapter.notifyItemRangeChanged(0, moneyAdapter.itemCount)
 
-        benefitsLayoutManager.spanCount = 3
+        benefitsLayoutManager.spanCount = 4
         benefitsAdapter.notifyItemRangeChanged(0, benefitsAdapter.itemCount)
 
-        billsLayoutManager.spanCount = 3
+        billsLayoutManager.spanCount = 4
         billsAdapter.notifyItemRangeChanged(0, billsAdapter.itemCount)
     }
 
     private fun getDataFromApi() {
+        Toast.makeText(this, "Fetching Data", Toast.LENGTH_SHORT).show()
         Log.i(TAG, "getDataFromApi: Called")
         val queue = Volley.newRequestQueue(this)
         val jsonObjectRequest = JsonObjectRequest(
@@ -158,7 +161,7 @@ class CategoriesActivity : AppCompatActivity() {
         for (i in 0..<money.length()) {
             val displayData = money.getJSONObject(i).getJSONObject("display_data")
             val currDataItem = RvItemClass(
-                R.drawable.ic_launcher_foreground,
+                R.drawable.default_icon,
                 displayData.getString("name"),
                 displayData.getString("description")
             )
@@ -170,7 +173,7 @@ class CategoriesActivity : AppCompatActivity() {
         for (i in 0..<benefits.length()) {
             val displayData = benefits.getJSONObject(i).getJSONObject("display_data")
             val currDataItem = RvItemClass(
-                R.drawable.ic_launcher_foreground,
+                R.drawable.default_icon,
                 displayData.getString("name"),
                 displayData.getString("description")
             )
@@ -182,7 +185,7 @@ class CategoriesActivity : AppCompatActivity() {
         for (i in 0..<bills.length()) {
             val displayData = bills.getJSONObject(i).getJSONObject("display_data")
             val currDataItem = RvItemClass(
-                R.drawable.ic_launcher_foreground,
+                R.drawable.default_icon,
                 displayData.getString("name"),
                 displayData.getString("description")
             )
