@@ -51,17 +51,18 @@
 
         <TextView
             android:id="@+id/tvMoney"
-            android:textAppearance="@style/titleStyle"
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:text="Money"
+            android:textAppearance="@style/titleStyle"
             app:layout_constraintTop_toBottomOf="@id/tvCred" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMoney"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@id/tvMoney"
             tools:itemCount="2"
             tools:listitem="@layout/rv_descriptive_items" />
@@ -70,36 +71,38 @@
             android:id="@+id/tvBenefits"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:text="Benefits"
-            android:layout_marginTop="20dp"
             android:textAppearance="@style/titleStyle"
             app:layout_constraintTop_toBottomOf="@id/rvMoney" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBenefits"
             android:layout_width="match_parent"
-            tools:listitem="@layout/rv_descriptive_items"
-            tools:itemCount="2"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvBenefits" />
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/tvBenefits"
+            tools:itemCount="2"
+            tools:listitem="@layout/rv_descriptive_items" />
 
         <TextView
             android:id="@+id/tvBills"
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
-            android:textAppearance="@style/titleStyle"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:text="Bills"
+            android:textAppearance="@style/titleStyle"
             app:layout_constraintTop_toBottomOf="@id/rvBenefits" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBills"
-            tools:itemCount="2"
-            tools:listitem="@layout/rv_descriptive_items"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvBills" />
+            app:layout_constraintTop_toBottomOf="@id/tvBills"
+            tools:itemCount="2"
+            tools:listitem="@layout/rv_descriptive_items" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

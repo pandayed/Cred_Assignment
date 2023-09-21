@@ -10,13 +10,46 @@
         android:id="@+id/clGotoCategory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="20dp"
         android:visibility="gone">
 
-        <Button
-            android:id="@+id/bGotoCategory"
+        <ImageView
+            android:id="@+id/tvIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="80dp"
+            android:src="@drawable/ic_icon1"
+            app:layout_constraintBottom_toTopOf="@id/tvAppTitle"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/tvAppTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginBottom="40dp"
+            android:text="CRED mint"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvDescription" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:text="grow your savings.\n3x faster"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toTopOf="@id/bGotoCategory" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bGotoCategory"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
             android:text="Go to category"
             app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -27,11 +60,13 @@
         android:id="@+id/clMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="40dp">
+        android:padding="40dp"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/ivLogo"
             android:layout_width="wrap_content"
+            android:background="@drawable/image_background"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintBottom_toTopOf="@id/tvTitle"
@@ -51,9 +86,12 @@
             app:layout_constraintBottom_toTopOf="@id/bChooseNewCategory"
             app:layout_constraintTop_toBottomOf="@id/ivLogo" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bChooseNewCategory"
             android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/button_background"
             android:layout_height="wrap_content"
             android:text="Choose new category for Home Screen"
             app:layout_constraintBottom_toBottomOf="parent" />
