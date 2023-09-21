@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerViewItemAdapter(private val layoutManager: GridLayoutManager, private val rvItems: MutableList<RvItemClass>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecyclerViewItemAdapter(private val layoutManager: GridLayoutManager, private val rvItems: MutableList<RvItemClass>, private val onCategoryClick: OnCategoryClick): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     enum class ViewType {
         SMALL,
@@ -26,6 +26,10 @@ class RecyclerViewItemAdapter(private val layoutManager: GridLayoutManager, priv
 
             ivItem = itemView.findViewById(R.id.ivItem)
             tvTitle = itemView.findViewById(R.id.tvTitle)
+
+            itemView.setOnClickListener {
+                onCategoryClick.onClick(adapterPosition)
+            }
         }
     }
 
@@ -39,6 +43,10 @@ class RecyclerViewItemAdapter(private val layoutManager: GridLayoutManager, priv
             ivItem = itemView.findViewById(R.id.ivItem)
             tvTitle = itemView.findViewById(R.id.tvTitle)
             tvDescription = itemView.findViewById(R.id.tvDescription)
+
+            itemView.setOnClickListener {
+                onCategoryClick.onClick(adapterPosition)
+            }
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

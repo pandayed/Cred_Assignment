@@ -30,14 +30,33 @@ class CategoriesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
 
+        val sharedPref = getSharedPreferences("com.edpub.cred_assignment", MODE_PRIVATE)
+
+        val sharedPrefEditor = sharedPref.edit()
+
         moneyLayoutManager = GridLayoutManager(this, 1)
-        moneyAdapter = RecyclerViewItemAdapter(moneyLayoutManager, DataItems.moneyItems)
+        moneyAdapter = RecyclerViewItemAdapter(moneyLayoutManager, DataItems.moneyItems, object: OnCategoryClick{
+            override fun onClick(index: Int) {
+                sharedPrefEditor.putString("category", DataItems.moneyItems[index].title)
+                sharedPrefEditor.commit()
+            }
+        })
 
         benefitsLayoutManager = GridLayoutManager(this, 1)
-        benefitsAdapter = RecyclerViewItemAdapter(benefitsLayoutManager, DataItems.benefitsItems)
+        benefitsAdapter = RecyclerViewItemAdapter(benefitsLayoutManager, DataItems.benefitsItems, object: OnCategoryClick{
+            override fun onClick(index: Int) {
+                sharedPrefEditor.putString("category", DataItems.benefitsItems[index].title)
+                sharedPrefEditor.commit()
+            }
+        })
 
         billsLayoutManager = GridLayoutManager(this, 1)
-        billsAdapter = RecyclerViewItemAdapter(billsLayoutManager, DataItems.billItems)
+        billsAdapter = RecyclerViewItemAdapter(billsLayoutManager, DataItems.billItems, object: OnCategoryClick{
+            override fun onClick(index: Int) {
+                sharedPrefEditor.putString("category", DataItems.billItems[index].title)
+                sharedPrefEditor.commit()
+            }
+        })
 
         val sViewChanger = findViewById<SwitchMaterial>(R.id.sViewChanger)
 
